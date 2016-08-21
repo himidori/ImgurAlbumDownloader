@@ -21,7 +21,7 @@ namespace ImgurAlbumDownloader
         {
             ServicePointManager.DefaultConnectionLimit = 10000;
 
-            string clientID = ReadSettings();
+            string clientID = ReadClientID();
             Console.Write(">album id:  ");
             string albumID = Console.ReadLine();
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -54,7 +54,7 @@ namespace ImgurAlbumDownloader
             return token["data"].Children().Select(o => o.ToObject<ImgurImage>()).ToList();
         }
 
-        private static string ReadSettings()
+        private static string ReadClientID()
         {
 
             if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.ini")))
